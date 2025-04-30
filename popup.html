@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tariff Tracker Settings</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Add Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="img/tarifftracker_logo.png" alt="Tariff Tracker" class="logo">
+    </div>
+    
+    <div class="control-panel">
+      <div class="toggle-container main-toggle">
+        <label class="switch">
+          <input type="checkbox" id="activeToggle">
+          <span class="slider round"></span>
+        </label>
+        <span class="toggle-label">Enable Tariff Tracker</span>
+      </div>
+
+      <div class="panel-section display-style">
+        <h3><i class="fas fa-eye"></i> Display Style</h3>
+        <div class="option-group">
+          <label class="radio-label">
+            <input type="radio" name="displayStyle" value="inline" checked>
+            <span class="radio-text">Inline (show next to price)</span>
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="displayStyle" value="tooltip">
+            <span class="radio-text">Tooltip (hover to see)</span>
+          </label>
+        </div>
+      </div>
+      
+      <div class="panel-section rate-settings">
+        <h3><i class="fas fa-percentage"></i> Tariff Rates</h3>
+        <div class="rate-setting default-rate">
+          <label for="defaultRate">Default Rate (%)</label>
+          <input type="number" id="defaultRate" min="0" max="100" step="0.1">
+        </div>
+        
+        <h4>Currency-Specific Rates</h4>
+        
+        <div class="currency-rates">
+          <div class="rate-setting">
+            <label for="usdRate">USD ($)</label>
+            <input type="number" id="usdRate" class="currency-rate" data-currency="USD" min="0" max="100" step="0.1">
+          </div>
+          
+          <div class="rate-setting">
+            <label for="eurRate">EUR (€)</label>
+            <input type="number" id="eurRate" class="currency-rate" data-currency="EUR" min="0" max="100" step="0.1">
+          </div>
+          
+          <div class="rate-setting">
+            <label for="gbpRate">GBP (£)</label>
+            <input type="number" id="gbpRate" class="currency-rate" data-currency="GBP" min="0" max="100" step="0.1">
+          </div>
+          
+          <div class="rate-setting">
+            <label for="cadRate">CAD (CA$)</label>
+            <input type="number" id="cadRate" class="currency-rate" data-currency="CAD" min="0" max="100" step="0.1">
+          </div>
+          
+          <div class="rate-setting">
+            <label for="audRate">AUD (A$)</label>
+            <input type="number" id="audRate" class="currency-rate" data-currency="AUD" min="0" max="100" step="0.1">
+          </div>
+          
+          <div class="rate-setting">
+            <label for="jpyRate">JPY (¥)</label>
+            <input type="number" id="jpyRate" class="currency-rate" data-currency="JPY" min="0" max="100" step="0.1">
+          </div>
+        </div>
+      </div>
+      
+      <div class="panel-section tariff-updates">
+        <h3><i class="fas fa-sync-alt"></i> Tariff Data Updates</h3>
+        <p class="update-info">
+          Last updated: <span id="lastUpdated">Never</span>
+        </p>
+        
+        <div class="update-actions">
+          <button id="updateNowButton" class="action-button">
+            <span class="button-text">Update Now</span>
+            <div class="spinner"></div>
+          </button>
+          <p class="update-source">
+            Data source: <a href="https://www.tradecomplianceresourcehub.com/2025/04/29/trump-2-0-tariff-tracker/" target="_blank" rel="noopener noreferrer">Trade Compliance Resource Hub</a>
+          </p>
+        </div>
+        
+        <div class="toggle-container auto-update-toggle">
+          <label class="switch">
+            <input type="checkbox" id="autoUpdateToggle">
+            <span class="slider round"></span>
+          </label>
+          <span class="toggle-label">Enable Daily Auto-Updates</span>
+        </div>
+      </div>
+      
+      <div class="action-buttons">
+        <button id="saveButton" class="primary-button"><i class="fas fa-save"></i> Save Settings</button>
+        <button id="resetButton" class="secondary-button"><i class="fas fa-redo"></i> Reset to Defaults</button>
+      </div>
+    </div>
+    
+    <div id="status" class="status-message"></div>
+    
+    <footer class="footer">
+      <p>&copy; 2025 Pernicious. <a href="mailto:p3rnicious@mail.com">Contact Support</a></p>
+    </footer>
+  </div>
+  <script src="tariff_updater.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
